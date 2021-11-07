@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .myDiv {
+          border: 5px outset red;
+          background-color: lightblue;    
+          text-align: center;
+        }
+        </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django Auth0 DEMO</title>
+    <title>Django Auth0</title>
 </head>
-<body>
-    <header>
-        {% if user.is_authenticated %}
-            <a href="/logout">Log Out</a>
-            <a href="/profile">Profile</a>
-        {% else %}
-            <a href="/login/auth0">Login</a>
-        {% endif %}
-    </header>
-    
+
+<body bgcolor="#afafaf">
     {% block body %}
         
     {% endblock body %}
+    <header style="text-align:center">
+        <div class="myDiv">
+            <p>ESPN's default point system will be used:</p>
+                <ul>
+                    <li>Point = 1</li>
+                    <li>Made 3pt Shot (3PM)= 1</li>
+                    <li>Field Goals Attempted (FGA) = -1</li>
+                    <li>Field Goals Made (FGM) = 2</li>
+                    <li>Free Throws Attempted (FTA) = -1</li>
+                    <li>Free Throws Made (FTM) = 1</li>
+                    <li>Rebound (REB)= 1</li>
+                    <li>Assist (AST)= 2</li>
+                    <li>Steal (STL) = 4</li>
+                    <li>Block (BLK) = 4</li>
+                    <li>Turnover (TOV) = -2</li>
+                
+                    <p>3-pointer made = 5 (3 for three points scored, 1 for a 3-pointer, 2 for a field goal made, and -1 for a field goal attempt; 3+1+2-1=5).</p>
+                    <p>2-pointer made = 3 (2 for two points scored, 2 for a field goal made, -1 for a field goal attempt; 2+2-1=3)</p>
+                    <p>Free throw made = 1 (1 for one point scored, 1 for a free throw made, -1 for a free throw attempt; 1+1-1=1)</p>
+                </ul>
+            </div>
+    
+        {% if user.is_authenticated %}
+            <a href="/profile">Profile</a>
+            <br/>
+            <a href="/logout">Log Out</a>
+        {% else %}
+
+            <a style="font-size:larger" href="/login/auth0">Auth0 Login</a>
+            
+        {% endif %}
+    </header>
         
 </body>
 </html>
